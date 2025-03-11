@@ -1,0 +1,13 @@
+name: hello world
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Displays hello world message
+        run: echo "hello world, Rod"
+
+      - name: Another task
+        run: echo "another task"
