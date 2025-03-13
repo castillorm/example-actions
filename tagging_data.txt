@@ -1,0 +1,15 @@
+# Valid Teams
+team:Security
+team:Platform
+team:DevOps
+
+# Valid Components
+component:Authentication
+component:Logging
+component:Networking
+
+# Valid Services
+service:API
+service:WebApp
+service:Database
+

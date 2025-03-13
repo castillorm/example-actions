@@ -1,0 +1,33 @@
+name: Terraform Tag Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.tf' # Trigger only on Terraform file changes
+
+jobs:
+  validate-tags:
+    name: Validate Terraform Tags
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 'latest'
+
+      - name: Validate Terraform Configuration
+        run: terraform init -backend=false
+
+      - name: Validate AWS Tags
+        run: python .github/scripts/validate_tags.py
